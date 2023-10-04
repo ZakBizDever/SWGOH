@@ -1,0 +1,21 @@
+version: '3'
+services:
+  symfony-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/var/www/html
+
+  react-frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile-front
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+    environment:
+      - REACT_APP_API_URL=http://symfony-api:8000

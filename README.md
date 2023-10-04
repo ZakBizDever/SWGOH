@@ -36,3 +36,6 @@
    Pour arrêter l'application, utilisez la commande suivante :
 
    docker-compose down
+
+**_N.B: _**
+Developed and tested under MacOS Sonoma 14.0 Apple M2 Chip.

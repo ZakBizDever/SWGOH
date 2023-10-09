@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\{
 };
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\HttpClient;
 
 #[Route('/api')]
 class JoueurController extends AbstractController
@@ -65,7 +65,7 @@ class JoueurController extends AbstractController
         $joueur = $joueurRepository->findOneBy(['ally_code' => $ally_code]);
 
         if (!$joueur) {
-            $client = HttpClient::create();
+            $client = HttpClient::create(); 
 
             $response = $client->request('GET', str_replace("{ally_code}", $ally_code, $this->apiUrls['joueur']));
             $data = $response->toArray();
